@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Configuración de Áreas y Permisos</title>
+    <link href="/public/final.css" rel="stylesheet">
+    <link rel="stylesheet" href="/src/styles.css">
+    <style>
+        .permissions-table {
+            max-height: 200px; /* Ajusta este valor según sea necesario */
+            overflow-y: auto; /* Permite scroll vertical */
+            margin-bottom: 20px; /* Espacio entre tablas */
+        }
+    </style>
+</head>
+<body class="flex items-center justify-center bg-gray-100 font-montserrat h-screen">
+    
+    <div id="sidebar" class="group bg-bim text-white h-full">
+        <div class="p-4 flex flex-col items-center mr-11">
+            <img class="w-28 h-28 mb-20 border-b border-white" src="/public/img/PQSWIM_white_MEDIUM.png" alt="Logo">
+            <div class="mb-4">
+                <a href="/public/views/roles.html" class="block mb-3 p-2 rounded-lg transition-colors duration-300 hover:bg-bom">Roles</a>
+                <a href="/public/views/areas.html" class="block mb-3 p-2 rounded-lg transition-colors duration-300 hover:bg-bom">Areas</a>
+                <a href="/public/views/usuarios.html" class="block mb-3 p-2 rounded-lg transition-colors duration-300 hover:bg-bom">Usuarios</a>
+            </div>
+        </div>
+    </div>
+
+    <div id="user" class="group fixed rounded-full top-2 right-2 h-16 w-16 hover:w-40 text-black flex items-center">
+        <div class="flex items-center justify-center w-16 h-16">
+            <img src="/public/img/userr.jpg" alt="Usuario" class="w-12 h-12 rounded-full object-cover">
+        </div>
+        <div class="hidden group-hover:flex items-center justify-center ml-2">
+            <a class="text-sm">Cerrar sesión</a>
+        </div>
+    </div>
+
+    <main class="flex-1 w-full mx-16 p-16">
+        <div class="border w-full border-gray-300 rounded-xl shadow-2xl bg-white p-6">
+            <div class="text-center mb-5">
+                <h1 class="text-2xl">Configuración de Áreas y Permisos</h1>
+            </div>
+    
+            <!-- Selección de área y rol -->
+            <div class="mb-4 flex justify-between">
+                <div class="flex items-center">
+                    <label for="selectArea" class="mr-2">Área:</label>
+                    <select id="selectArea" class="border p-2 rounded-md">
+                        <option value="diseno">Diseño</option>
+                        <option value="produccion">Producción</option>
+                        <option value="calidad">Calidad</option>
+                    </select>
+                </div>
+                <div class="flex items-center">
+                    <label for="selectRol" class="mr-2">Rol:</label>
+                    <select id="selectRol" class="border p-2 rounded-md">
+                        <option value="operativo">Operativo</option>
+                        <option value="supervisor">Supervisor</option>
+                        <option value="administrador">Administrador</option>
+                    </select>
+                </div>
+            </div>
+    
+            <!-- Tabla dinámica de permisos y privilegios -->
+            <div id="permisos-container" class="overflow-y-auto max-h-80">
+                <div class="overflow-x-auto">
+                    <!-- Aquí se mostrarán los permisos por área de forma separada -->
+                </div>
+                <div class="flex justify-end mt-4">
+                    <button onclick="addNewPermiso()" class="flex items-center p-2.5 bg-bom text-white rounded-md hover:bg-bum transition-colors">
+                        <img src="/public/img/icons8-más-2-matemáticas-64.png" alt="Nuevo Permiso" class="h-6 mr-2">
+                        Nuevo Permiso
+                    </button>
+                </div>
+            </div>
+    
+            <!-- Botón para agregar permisos -->
+            
+        </div>
+    </main>
+    
+    <script src="/public/js/scriptsConfigu.js"></script>    
+</body>
+</html>

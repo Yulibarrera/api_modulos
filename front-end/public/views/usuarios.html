@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Usuarios</title>
+    <link rel="stylesheet" href="/public/final.css">
+    <link rel="stylesheet" href="/src/styles.css">
+</head>
+<body class="flex items-center justify-center bg-gray-100 font-montserrat h-screen">
+    <div id="sidebar" class="group bg-bim text-white h-full">
+        <div class="p-4 flex flex-col items-center mr-11">
+            <img class="w-28 h-28 mb-20 border-b border-white" src="/public/img/PQSWIM_white_MEDIUM.png" alt="Logo">
+            <div class="mb-4">
+                <a href="/public/views/roles.html" class="block mb-3 p-2 rounded-lg transition-colors duration-300 hover:bg-bom">Roles</a>
+                <a href="/public/views/areas.html" class="block mb-3 p-2 rounded-lg transition-colors duration-300 hover:bg-bom">Areas</a>
+                <a href="/public/views/usuarios.html" class="block mb-3 p-2 rounded-lg transition-colors duration-300 hover:bg-bom">Usuarios</a>
+            </div>
+        </div>
+    </div>
+
+    <div id="user" class="group fixed rounded-full top-2 right-2 h-16 w-16 hover:w-40 text-black flex items-center">
+        <div class="flex items-center justify-center w-16 h-16">
+            <img src="/public/img/userr.jpg" alt="Usuario" class="w-12 h-12 rounded-full object-cover">
+        </div>
+        <div class="hidden group-hover:flex items-center justify-center ml-2">
+            <a class="text-sm">Cerrar sesión</a>
+        </div>
+    </div>
+
+    <main class="flex-1 w-full mx-16 p-16">
+        <div class="border w-full border-gray-300 rounded-xl shadow-2xl bg-white p-6">
+            <div class="text-center mb-5">
+                <h1 class="text-2xl">Usuarios</h1>
+            </div>
+            <div class="flex justify-between items-center mb-5">
+                <div class="flex items-center ml-auto">
+                    <button onclick="openModal()" class="flex items-center p-2.5 bg-bom text-white rounded-md hover:bg-bum transition-colors">
+                        <img src="/public/img/icons8-más-2-matemáticas-64.png" alt="Nuevo Rol" class="h-4 mr-2">
+                        Nuevo usuario
+                    </button>
+                </div>
+            </div>
+
+            <div class="mb-5">
+                <div class="overflow-x-auto">
+                    <table class="w-full border-collapse">
+                        <thead>
+                            <tr class="text-left border-b border-gray-300">
+                                <th class="px-4 py-2 border-b border-gray-300 text-left">Documento</th>
+                                <th class="px-4 py-2 border-b border-gray-300 text-left">Nombre</th>
+                                <th class="px-4 py-2 border-b border-gray-300 text-left">Apellidos</th>
+                                <th class="px-4 py-2 border-b border-gray-300 text-left">Rol</th>
+                                <th class="px-4 py-2 border-b border-gray-300 text-left">Area</th>
+                                <th class="px-4 py-2 border-b border-gray-300 text-left">Estado</th>
+                                <th class="px-4 py-2 border-b border-gray-300 text-left">Acciones</th>
+                            </tr>
+                        </thead>
+                        <tbody id="user-table-body">
+                            <!-- Aquí se cargarán los datos dinámicamente -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <div id="modal" class="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 hidden">
+        <div class="bg-white w-full max-w-2xl rounded-lg shadow-lg p-8 relative">
+            <h1 class="text-center text-2xl mb-6" id="modal-title">NUEVO USUARIO</h1>
+            <span class="absolute top-2 right-2 cursor-pointer text-2xl" onclick="closeModal()">&times;</span>
+            <form id="user-form">
+                <div class="grid grid-cols-2 gap-4">
+                    <div class="mb-4">
+                        <label for="nombres" class="block text-sm mb-2">Nombres:</label>
+                        <input type="text" id="nombres" name="nombres" class="w-full p-2.5 border border-gray-300 rounded-md" required>
+                    </div>
+                    <div class="mb-4">
+                        <label for="apellidos" class="block text-sm mb-2">Apellidos:</label>
+                        <input type="text" id="apellidos" name="apellidos" class="w-full p-2.5 border border-gray-300 rounded-md" required>
+                    </div>
+                    <div class="mb-4">
+                        <label for="documento" class="block text-sm mb-2">Documento:</label>
+                        <input type="text" id="documento" name="documento" class="w-full p-2.5 border border-gray-300 rounded-md" required>
+                    </div>
+                    <div class="mb-4">
+                        <label for="rol" class="block text-sm mb-2">Rol:</label>
+                        <select id="rol" name="rol" class="w-full p-2.5 border border-gray-300 rounded-md" required>
+                            <!-- Opciones de roles se cargarán aquí -->
+                        </select>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-3 gap-4 mb-6">
+                    <div>
+                        <label class="block text-sm mb-2">Área:</label>
+                        <div id="areas-checkboxes" class="space-y-2">
+                            <!-- Aquí se cargarán los checkbox dinámicamente -->
+                        </div>
+                    </div>
+
+                    <div class="col-span-2 flex justify-end">
+                        <div class="w-3/5">
+                            <div class="mb-4">
+                                <label for="usuario" class="block text-sm mb-2">Usuario:</label>
+                                <input type="text" id="usuario" name="usuario" class="w-full p-2 border border-gray-300 rounded-md" readonly>
+                            </div>
+                            <div class="mb-4">
+                                <label for="contrasena" class="block text-sm mb-2">Contraseña:</label>
+                                <input type="password" id="contrasena" name="contrasena" class="w-full p-2 border border-gray-300 rounded-md" required>
+                            </div>
+                            <div class="mb-4">
+                                <label for="confirmar-contrasena" class="block text-sm mb-2">Confirmar contraseña:</label>
+                                <input type="password" id="confirmar-contrasena" name="confirmar-contrasena" class="w-full p-2 border border-gray-300 rounded-md" required>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="flex justify-between">
+                    <button type="button" onclick="closeModal()" class="px-4 py-2 bg-gray-500 text-white rounded-md">
+                        Cancelar
+                    </button>
+                    <button type="submit" class="px-4 py-2 bg-bom text-white rounded-md">
+                        Guardar Usuario
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="/public/js/functionusuarios.js"></script>
+</body>
+</html>

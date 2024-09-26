@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Areas</title>
+    <link rel="stylesheet" href="/public/final.css" >
+    <link rel="stylesheet" href="/src/styles.css">
+</head>
+<body class="flex items-center justify-center bg-gray-100 font-montserrat h-screen">
+    
+    <div id="sidebar" class="group bg-bim text-white h-full">
+        <div class="p-4 flex flex-col items-center mr-11">
+            <img class="w-28 h-28 mb-20 border-b border-white" src="/public/img/PQSWIM_white_MEDIUM.png" alt="Logo">
+            <div class="mb-4">
+                <a href="/public/views/roles.html" class="block mb-3 p-2 rounded-lg transition-colors duration-300 hover:bg-bom">Roles</a>
+                <a href="/public/views/areas.html" class="block mb-3 p-2 rounded-lg transition-colors duration-300 hover:bg-bom">Areas</a>
+                <a href="/public/views/usuarios.html" class="block mb-3 p-2 rounded-lg transition-colors duration-300 hover:bg-bom">Usuarios</a>
+            </div>
+        </div>
+    </div>
+    
+    <div id="user" class="group fixed rounded-full top-2 right-2 h-16 w-16 hover:w-40 text-black flex items-center">
+        <div class="flex items-center justify-center w-16 h-16">
+            <img src="/public/img/userr.jpg" alt="Usuario" class="w-12 h-12 rounded-full object-cover">
+        </div>
+        <div class="hidden group-hover:flex items-center justify-center ml-2">
+            <a href="/public/views/login.html" class="text-sm">Cerrar sesión</a>
+        </div>
+    </div>
+
+    <!-- Main content -->
+    <main class="flex-1 w-full mx-16 p-16">
+        <div class="border w-full border-gray-300 rounded-xl shadow-2xl bg-white p-6">
+            <div class="text-center mb-5">
+                <h1 class="text-2xl">Configuración de Áreas</h1>
+            </div>
+
+            <div class="flex justify-between items-center mb-5">
+                <div class="flex items-center ml-auto">
+                    <button onclick="addNewArea()" class="flex items-center p-2.5 bg-bom text-white rounded-md hover:bg-bum transition-colors">
+                        <img src="/public/img/icons8-más-2-matemáticas-64.png" alt="Nueva Área" class="h-6 mr-2">
+                        Nueva Área
+                    </button>                        
+                </div>
+            </div>
+
+            <div class="mb-5">
+                <div class="overflow-x-auto">
+                    <table class="w-full border-collapse">
+                        <thead>
+                            <tr>
+                                <th class="px-4 py-2 border-b border-gray-300 text-left">Nombre Área</th>
+                                <th class="px-4 py-2 border-b border-gray-300 text-center">Configurar Permisos</th>
+                                <th class="px-4 py-2 border-b border-gray-300 text-center">Estado</th>
+                                <th class="px-4 py-2 border-b border-gray-300 text-center">Acciones</th>
+                            </tr>
+                        </thead>
+                        <tbody id="areas-tbody">
+                            <!-- No hay áreas aún -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script src="/public/js/scriptsArea.js"></script>
+</body>
+</html>
